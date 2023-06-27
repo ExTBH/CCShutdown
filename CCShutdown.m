@@ -21,6 +21,18 @@
 @implementation SomeButton
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // self.view.frame = CGRectMake(10, 10, 20, 20);
+
+    self.title = @"Title";
+    self.subtitle = @"Subtitle";
+
+    // UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    // btn.translatesAutoresizingMaskIntoConstraints = NO;
+    // [btn setImage:[UIImage systemImageNamed:@"arrow.down.circle.fill"] forState:UIControlStateNormal];
+    // //colors
+    // [btn setTintColor:[UIColor whiteColor]];
+
+    // self.button = btn;
 
 
     self.view.backgroundColor = UIColor.redColor;
@@ -56,17 +68,15 @@
     self = [super initWithNibName:name bundle:bundle];
     if (self) {
         self.view.clipsToBounds = YES;
+        [self loadContent];
     }
     return self;
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    _preferredExpandedContentWidth = 200;
-    _preferredExpandedContentHeight = 80;
-    // SomeButton *btn = [SomeButton new];
-    // [self addChildViewController:btn];
-    // [self.view addSubview:btn.view];
-
+-(void)loadContent {
+     SomeButton *btn = [SomeButton new];
+    [self addChildViewController:btn];
+    [self.view addSubview:btn.view];
+    
     // btn.view.translatesAutoresizingMaskIntoConstraints = NO;
     // [NSLayoutConstraint activateConstraints:@[
     //     [btn.view.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
@@ -75,11 +85,20 @@
     //     [btn.view.heightAnchor constraintEqualToAnchor:self.view.heightAnchor],
     // ]];
 }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    _preferredExpandedContentWidth = 200;
+    _preferredExpandedContentHeight = 80;
+}
 - (BOOL)_canShowWhileLocked {
 	return YES;
 }
 - (BOOL)shouldPerformClickInteraction {
     return NO;
+}
+- (void)controlCenterDidDismiss {
+}
+- (void)controlCenterWillPresent {
 }
 
 @end
