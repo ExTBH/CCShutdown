@@ -1,0 +1,9 @@
+Package: dev.extbh.ccshutdown
+Name: CCShutdown
+Depends: com.opa334.ccsupport
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome Control Center module!
+Maintainer: Natheer
+Author: Natheer
+Section: Control Center (Modules)

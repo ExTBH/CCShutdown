@@ -1,0 +1,5 @@
+.cache/
+.theos/
+packages/
+.DS_Store
+compile_commands.json
