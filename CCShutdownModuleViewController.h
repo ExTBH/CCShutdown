@@ -12,6 +12,7 @@ typedef struct CCUILayoutSize {
 @interface CCShutdownModuleViewController : UIViewController <CCUIContentModuleContentViewController>
 @property (nonatomic, strong) ActionLabelViewController *actionLabelViewController;
 @property (nonatomic, strong) ActionSelectionViewController *actionSelectionViewController;
+@property (strong, nonatomic) ShutdownAction *action;
 
 
 @end

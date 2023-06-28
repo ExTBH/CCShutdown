@@ -34,16 +34,9 @@
         [self.actionLabel.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
     ]];
     self.actionLabel.text =  @"Hold me!";
-
-
-    // self.countdownTime = 1.1 * 60;
-
-// Create an NSTimer to update the countdown label
-    // self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateTimerLabel:) userInfo:nil repeats:YES];
 }
 
 - (void)updateTimerLabel:(NSTimer *)timer {
-    
     if (self.countdownTime > 0) {
         self.countdownTime--;
         
@@ -56,16 +49,46 @@
         NSString *formattedTime = [formatter stringFromTimeInterval:self.countdownTime];
         
         // Update the label text
-        self.actionLabel.text = [NSString stringWithFormat:@"Shutting down in %@", formattedTime];
+        NSString *actionString = timer.userInfo;
+        self.actionLabel.text = [NSString stringWithFormat:@"%@ in %@",actionString, formattedTime];
     } else {
-        // Countdown reached zero, stop the timer or perform any necessary actions
         [timer invalidate];
-        self.actionLabel.text = @"Countdown completed!";
+        self.timer = nil;
+        self.actionLabel.text = @"Should happen anytime now";
     }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
 
+-(void)controlCenterDidDismiss {
+    if (self.timer != nil) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    self.countdownTime = -1;
+    self.actionLabel.text = @"Hold me!";
+}
+
+- (void)setupWithAction:(ShutdownAction *)action {
+    self.countdownTime = [action.dueIn timeIntervalSinceNow];
+    NSString *actionString = nil;
+    switch (action.type) {
+        case ShutdownActionTypeShutdown:
+            actionString = @"Shutting down";
+            break;
+        case ShutdownActionTypeReboot:
+            actionString = @"Restarting";
+            break;
+        case ShutdownActionTypeRespring:
+            actionString = @"Respringing";
+            break;
+    }
+    self.timer = [NSTimer 
+        scheduledTimerWithTimeInterval:1.0
+        target:self
+        selector:@selector(updateTimerLabel:)
+        userInfo:actionString 
+        repeats:YES];
 }
 @end

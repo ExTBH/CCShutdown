@@ -3,7 +3,7 @@
 #import <objc/objc-runtime.h>
 #import "CCShutdownModuleViewController.h"
 
-@implementation CCShutdown
+@implementation CCShutdown  
 @synthesize contentViewController;
 @synthesize backgroundViewController;
 - (instancetype)init {
