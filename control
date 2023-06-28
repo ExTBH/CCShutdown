@@ -3,7 +3,7 @@ Name: CCShutdown
 Depends: com.opa334.ccsupport, mobilesubstrate (>= 0.9.5000)
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: An awesome Control Center module!
+Description: Scheudle a Shutdown (and more) from your CC!
 Maintainer: ExTBH
 Author: ExTBH
 Section: Control Center (Modules)
