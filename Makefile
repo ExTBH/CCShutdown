@@ -7,7 +7,7 @@ BUNDLE_NAME = CCShutdown
 CCShutdown_BUNDLE_EXTENSION = bundle
 CCShutdown_FILES =  $(wildcard *.m)
 CCShutdown_CFLAGS = -fobjc-arc
-CCShutdown_FRAMEWORKS = UIKit
+CCShutdown_FRAMEWORKS = UIKit CydiaSubstrate
 CCShutdown_PRIVATE_FRAMEWORKS = ControlCenterUIKit
 CCShutdown_INSTALL_PATH = /Library/ControlCenter/Bundles/
 
