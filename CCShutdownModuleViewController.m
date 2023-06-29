@@ -5,12 +5,6 @@
 #import <rootless.h>
 #import <spawn.h>
 
-// tell https://github.com/theos/headers/pull/84 is merged
-@interface FBSSystemService (CCShutdown)
-- (void)shutdown;
-- (void)reboot;
-@end
-
 @implementation CCShutdownModuleViewController
 @synthesize preferredExpandedContentWidth;
 @synthesize preferredExpandedContentHeight;
